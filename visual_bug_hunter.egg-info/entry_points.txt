@@ -1,0 +1,2 @@
+[console_scripts]
+vbh = visual_bug_hunter:main

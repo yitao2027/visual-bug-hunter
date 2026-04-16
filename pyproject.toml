@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visual-bug-hunter"
+version = "0.1.0"
+description = "AI-powered visual bug hunter for GUI apps. Automatically detects UI anomalies, locates source code, and generates minimal diffs to fix bugs."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Yi Tao", email = "yitao2027@example.com"}
+]
+keywords = ["gui-testing", "bug-detection", "automation", "pyautogui", "ai-tools", "visual-testing", "vibe-coding", "ui-debugging"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pyautogui>=0.9.54",
+    "Pillow>=9.0.0",
+]
+requires-python = ">=3.8"
+
+[project.scripts]
+vbh = "visual_bug_hunter:main"
+
+[tool.setuptools.packages.find]
+where = ["."]

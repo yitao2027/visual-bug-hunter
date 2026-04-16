@@ -1,0 +1,7 @@
+pyproject.toml
+visual_bug_hunter.egg-info/PKG-INFO
+visual_bug_hunter.egg-info/SOURCES.txt
+visual_bug_hunter.egg-info/dependency_links.txt
+visual_bug_hunter.egg-info/entry_points.txt
+visual_bug_hunter.egg-info/requires.txt
+visual_bug_hunter.egg-info/top_level.txt

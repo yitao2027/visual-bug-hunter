@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: visual-bug-hunter
+Version: 0.1.0
+Summary: AI-powered visual bug hunter for GUI apps. Automatically detects UI anomalies, locates source code, and generates minimal diffs to fix bugs.
+Author-email: Yi Tao <yitao2027@example.com>
+License: MIT
+Keywords: gui-testing,bug-detection,automation,pyautogui,ai-tools,visual-testing,vibe-coding,ui-debugging
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pyautogui>=0.9.54
+Requires-Dist: Pillow>=9.0.0

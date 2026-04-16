@@ -1,0 +1,1 @@
+<evicted reason="file_written" chars=4293 ref="/Users/182378252qq.com/.real/users/user-05e652c12065c87f63ac28ea21bf71f7/workspace/visual-bug-hunter/README.md" />
