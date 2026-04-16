@@ -4,6 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PyPI version](https://badge.fury.io/py/visual-bug-hunter.svg)](https://badge.fury.io/py/visual-bug-hunter)
 
+> **🚀 想要跨平台的 AI 调试体验？**  
+> 如果你希望在悟空、WorkBuddy、Cursor 等工具中通过自然语言直接调用此技能，请切换到 **[mcp-version](https://github.com/yitao2027/visual-bug-hunter/tree/mcp-version)** 分支。该版本遵循通用 MCP 标准，实现“一次安装，多端兼容”。
+
 **AI-powered visual bug detection and fixing tool for GUI apps.** 
 
 Let AI "see" and "click" like a human tester to find UI bugs, locate the exact code, and apply minimal fixes. Perfect for **Vibe Coding** users who want their AI agents to self-verify UI changes.
