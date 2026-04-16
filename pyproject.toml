@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visual-bug-hunter-mcp"
+version = "2.0.0"
+description = "Universal MCP Skill for visual bug detection and fixing in GUI/Web apps. Compatible with Wukong, WorkBuddy, Cursor, and more."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Yitao", email = "yitao@example.com"}
+]
+keywords = ["mcp", "skill", "ai", "vibe-coding", "visual-testing", "bug-detection", "gui-testing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "pyautogui>=0.9.54",
+    "Pillow>=9.0.0",
+]
+
+[project.scripts]
+vbh-mcp = "src.adapters.mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/yitao2027/visual-bug-hunter-universal"
+Repository = "https://github.com/yitao2027/visual-bug-hunter-universal"
