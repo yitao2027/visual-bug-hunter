@@ -1,107 +1,35 @@
-# BUG 修复规则手册（适用于所有 AI 编程助手）
+# Visual Bug Hunter Rules
 
-> 把这个文件放进你的项目根目录。每次让 AI 修 bug 时说一句：
-> **"请先读取 BUG_RULES.md，然后按照里面的规则来修这个 bug。"**
+## Core Workflow (Must Follow)
 
----
+1. **Screenshot Confirmation**: Always capture a screenshot BEFORE any fix to establish baseline.
+2. **Locate Code**: Use visual analysis + static code scanning to find the exact file and line.
+3. **Minimal Diff Fix**: Apply the smallest possible change. Never rewrite entire files.
+4. **Screenshot Verification**: Capture a screenshot AFTER the fix to prove it worked.
 
-## 🚨 铁律三条（违反即为失败）
+## Anti-Patterns (Never Do)
 
-1. **修完必须截图**：修复代码后，必须重新运行 App 并截图确认，不得仅凭代码逻辑宣布"修复完成"
-2. **最小改动**：只修改有问题的那几行代码，禁止顺手重构其他无关代码
-3. **一次只改一个 Bug**：改完截图确认后，再改下一个
+- ❌ Claiming "fixed" without visual evidence (screenshot).
+- ❌ Rewriting large portions of UI code when a one-line change suffices.
+- ❌ Ignoring disabled widgets (`setEnabled(False)`, `state=DISABLED`).
+- ❌ Ignoring duplicate renders (calling `.pack()` or `.grid()` twice on the same widget).
 
----
+## Specialized Checks
 
-## 📋 标准修复流程
+### 1. Disabled Widgets
+Scan for:
+- `setEnabled(False)` / `setEnabled(0)`
+- `state="disabled"` / `state=DISABLED`
+- `.disabled = True`
+- `userInteractionEnabled = false`
 
-```
-第一步：接收用户描述的 Bug + 截图
-第二步：用视觉分析截图，生成「Bug 清单」（位置 + 类型 + 严重度）
-第三步：用关键词搜索定位代码（不要全量读取整个项目）
-第四步：只读取命中行前后 5 行的上下文
-第五步：生成最小 Diff（只改目标行）
-第六步：修复代码
-第七步：【必须执行】重新运行 App，截图确认 Bug 是否消失
-第八步：如果消失 → 标记为 ✅ 已修复，继续下一个
-         如果未消失 → 重新分析，不得重复同样的修复方式
-```
+### 2. Duplicate Renders
+Scan for:
+- Same widget calling `.pack()`, `.grid()`, or `.place()` multiple times.
+- Multiple `add_widget()` calls for the same component.
 
----
+## Token Saving Principles
 
-## 🔍 常见 Bug 快速定位指南
-
-### 按钮 / 输入框点不了
-优先搜索：`setEnabled(False)` / `state=DISABLED` / `disabled=True` / `state="disabled"`
-
-常见原因：初始化时被禁用，忘记在合适时机启用
-
-修复示例：
-```python
-# 错误
-self.search_input.setEnabled(False)
-# 修复
-self.search_input.setEnabled(True)
-```
-
----
-
-### 元素重复显示（同一个组件出现两次）
-优先搜索：`.pack(` / `.grid(` / `.place(` / `add_widget(`
-
-常见原因：同一个组件的布局方法被调用了两次（比如在 `__init__` 和 `setup_ui` 里各调用一次）
-
-修复示例：
-```python
-# 错误：pack 被调用两次
-self.bubble_frame.pack(fill="x")   # 第 45 行
-self.bubble_frame.pack(fill="x")   # 第 89 行 ← 删除这行
-```
-
----
-
-### Tab 重复出现
-优先搜索：`add_tab` / `insert_tab` / `notebook.add` / `tabview.add`
-
-常见原因：Tab 初始化代码在循环中，或被调用了两次
-
----
-
-## ⛔ 禁止行为清单
-
-- ❌ 修复后不截图就宣布"已修复"
-- ❌ 同一个 Bug 用同样方式修了超过 2 次
-- ❌ 一次性批量修改多个文件
-- ❌ 修 Bug 时顺手重构无关代码（这是代码臃肿的主因）
-- ❌ 全量读取整个项目文件（浪费 token）
-
----
-
-## 📊 Bug 报告输出格式
-
-修复完成后，必须按以下格式汇报：
-
-```
-## Bug 修复报告
-
-### BUG-001 ✅ 已修复 — 搜索输入框点击无响应
-- 代码位置：src/ui/sidebar.py 第 87 行
-- 问题代码：self.search_input.setEnabled(False)
-- 修复方案：将 False 改为 True
-- 验证方式：截图确认输入框可点击 ✅
-
-### BUG-002 ✅ 已修复 — 聊天气泡重复显示
-- 代码位置：src/ui/chat_view.py 第 134 行
-- 问题代码：self.bubble_frame.pack() 被调用两次
-- 修复方案：删除第 134 行的重复调用
-- 验证方式：截图确认只显示一个气泡 ✅
-```
-
----
-
-## ⚡ 省 Token 检查清单（每次修复前必查）
-
-- [ ] 是否只读取了必要的代码文件？（不超过 3 个文件）
-- [ ] 是否使用了关键词搜索而不是全量读取？
-- [ ] 修复 Diff 是否控制在 10 行以内？
-- [ ] 是否避免了重构无关代码？
+1. **Load Only Relevant Files**: Don't read the whole project. Search by keywords from the bug description.
+2. **Output Minimal Diffs**: Show only the changed lines, not the full file.
+3. **One Bug at a Time**: Fix and verify one issue before moving to the next.
