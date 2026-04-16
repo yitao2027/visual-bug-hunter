@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=64.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visual-bug-hunter"
+version = "1.0.0"
+description = "AI-powered visual bug detection and fixing tool for GUI apps. Let AI 'see' and 'click' like a human tester."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Yitao", email = "yitao@example.com"}
+]
+keywords = ["ai", "vibe-coding", "visual-testing", "bug-detection", "gui-testing", "screenshot", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "pyautogui>=0.9.54",
+    "Pillow>=9.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "flake8>=6.0",
+]
+
+[project.scripts]
+vbh = "visual_bug_hunter.cli:main"
+visual-bug-hunter = "visual_bug_hunter.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yitao2027/visual-bug-hunter"
+Repository = "https://github.com/yitao2027/visual-bug-hunter"
+Issues = "https://github.com/yitao2027/visual-bug-hunter/issues"
