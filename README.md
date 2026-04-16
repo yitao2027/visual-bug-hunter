@@ -7,7 +7,9 @@
 > **🚀 想要跨平台的 AI 调试体验？**  
 > 如果你希望在悟空、WorkBuddy、Cursor 等工具中通过自然语言直接调用此技能，请切换到 **[mcp-version](https://github.com/yitao2027/visual-bug-hunter/tree/mcp-version)** 分支。该版本遵循通用 MCP 标准，实现“一次安装，多端兼容”。
 
-**AI-powered visual bug detection and fixing tool for GUI apps.** 
+**AI-powered visual bug detection and fixing tool for GUI apps.**
+
+![Visual Bug Hunter Demo](https://raw.githubusercontent.com/yitao2027/visual-bug-hunter/main/assets/demo.gif) 
 
 Let AI "see" and "click" like a human tester to find UI bugs, locate the exact code, and apply minimal fixes. Perfect for **Vibe Coding** users who want their AI agents to self-verify UI changes.
 
